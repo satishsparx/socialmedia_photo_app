@@ -14,6 +14,17 @@ class Card extends Component {
         }
 
     }
+
+    componentDidUpdate(nextProps) {
+        const { likes, comments } = this.props.data;
+        if (nextProps.data.likes !== likes || nextProps.data.comments !== comments) {
+            this.setState({
+                likes: this.props.data.likes,
+                comments: this.props.data.comments
+            })
+        }
+    }
+
     likeHandle = () => {
         if(this.state.buttonLabel === 'Like'){
             this.setState({
@@ -28,7 +39,7 @@ class Card extends Component {
             })
         }
     }
-    addComment = () => {
+    addComment = (e) => {
         if(this.state.comment !== ""){
             this.setState({
                 comments: this.state.comments.concat(this.state.comment)

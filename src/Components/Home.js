@@ -22,18 +22,12 @@ class Home extends Component {
     sortCards = (sortby) => {
         if(sortby === 'like') {
             this.setState({
-                data: this.state.data.sort(function(a, b)
-                {
-                    return b.likes - a.likes
-                })
+                data: this.state.data.sort(function(a, b){ return b.likes - a.likes })
             })
         }
         else if(sortby === 'comment') {
             this.setState({
-                data: this.state.data.sort(function(a, b)
-                {
-                    return b.comments.length - a.comments.length
-                })
+                data: this.state.data.sort(function(a, b){ return b.comments.length - a.comments.length })
             })
         }
     }
@@ -49,12 +43,10 @@ class Home extends Component {
         });
       })
     }
-
     render() {
         const filteredData = this.state.data.filter(
             card => card.category.toLowerCase().indexOf(this.state.searchString.length>0?this.state.searchString.toLowerCase():this.state.searchString) !== -1,
         );
-
         return (
             <div>
                 <button type="button" onClick={() => this.sortCards("like")} >Most Liked</button>
