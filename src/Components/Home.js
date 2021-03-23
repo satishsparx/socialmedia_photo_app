@@ -55,9 +55,6 @@ class Home extends Component {
             card => card.category.toLowerCase().indexOf(this.state.searchString.length>0?this.state.searchString.toLowerCase():this.state.searchString) !== -1,
         );
 
-        console.log("Inside render of home");
-        console.log(filteredData);
-
         return (
             <div>
                 <button type="button" onClick={() => this.sortCards("like")} >Most Liked</button>
