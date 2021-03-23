@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import '../Styles/Card.scss';
-import './Card.css';
+import '../Styles/Card.css';
 
 class Card extends Component {
     constructor(props){
@@ -12,9 +11,7 @@ class Card extends Component {
             comment: "",
             category: props.data.category
         }
-
     }
-
     componentDidUpdate(nextProps) {
         const { likes, comments } = this.props.data;
         if (nextProps.data.likes !== likes || nextProps.data.comments !== comments) {
@@ -61,9 +58,9 @@ class Card extends Component {
                     <br/>
                     <input type="text" id={this.props.data.id} name={this.props.data.id} onChange={(e)=> this.getComment(e)} placeholder="Type your comment here..."></input>
                     <button type="button" onClick={this.addComment} >POST</button><br/>
-                    <div className="temp">
+                    <div className="comments">
                         {this.state.comments.map(comment => {
-                            return <p className="hello">{comment}</p>
+                            return <p className="comment">{comment}</p>
                         })}
                     </div>
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Card from './Card';
 import axios from 'axios';
-import './Home.css';
+import '../Styles/Home.css';
 
 class Home extends Component {
     constructor(props){
