@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Card from './Card';
 import axios from 'axios';
+import './Home.css';
 
 class Home extends Component {
     constructor(props){
@@ -20,10 +21,20 @@ class Home extends Component {
 
     sortCards = (sortby) => {
         if(sortby === 'like') {
-
+            this.setState({
+                data: this.state.data.sort(function(a, b)
+                {
+                    return b.likes - a.likes
+                })
+            })
         }
         else if(sortby === 'comment') {
-
+            this.setState({
+                data: this.state.data.sort(function(a, b)
+                {
+                    return b.comments.length - a.comments.length
+                })
+            })
         }
     }
 
@@ -43,15 +54,21 @@ class Home extends Component {
         const filteredData = this.state.data.filter(
             card => card.category.toLowerCase().indexOf(this.state.searchString.length>0?this.state.searchString.toLowerCase():this.state.searchString) !== -1,
         );
+
+        console.log("Inside render of home");
+        console.log(filteredData);
+
         return (
             <div>
                 <button type="button" onClick={() => this.sortCards("like")} >Most Liked</button>
                 <button type="button" onClick={() => this.sortCards("comment")} >Most Commented</button>
                 <input type="text" id="searchimage" name='searchimage' onChange={(e)=> this.searchImage(e)} placeholder="Search Images..."></input>
-                {
-                    filteredData.map((card,index)=>{
-                   return <Card key={index} id={card.id} category={card.category} comments={card.comments} likes={card.likes} url={card.url}/>
-                })}
+                <div className="flex-container">
+                    {
+                        filteredData.map((card,index)=>{
+                    return <Card key={index} data={card}/>
+                    })}
+                </div>
             </div>
         );
     }

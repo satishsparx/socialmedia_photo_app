@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 // import '../Styles/Card.scss';
+import './Card.css';
 
 class Card extends Component {
     constructor(props){
         super(props);
         this.state = {
-            likes: props.likes,
+            likes: props.data.likes,
             buttonLabel: "Like",
-            comments: props.comments,
+            comments: props.data.comments,
             comment: "",
-            category: props.category
+            category: props.data.category
         }
 
     }
@@ -42,15 +43,18 @@ class Card extends Component {
     render() {
         return (
             <div>
-                <img src={this.props.url} width="230" height="160"/> <br/>
+                <img src={this.props.data.url} alt={this.props.data.category} width="230" height="160"/> <br/>
                     {this.state.likes}
                     <button type="button" onClick={this.likeHandle} >{this.state.buttonLabel}</button>
-                    {this.props.category} <br/>
-                    <input type="text" id={this.props.id} name={this.props.id} onChange={(e)=> this.getComment(e)} placeholder="Type your comment here..."></input>
+                    {this.props.data.category} <br/>
+                    <input type="text" id={this.props.data.id} name={this.props.data.id} onChange={(e)=> this.getComment(e)} placeholder="Type your comment here..."></input>
                     <button type="button" onClick={this.addComment} >POST</button><br/>
-                    {this.state.comments.map(comment => {
-                        return <><p>{comment}</p><hr/></>
-                    })}
+                    <div className="temp">
+                        {this.state.comments.map(comment => {
+                            return <p className="hello">{comment}</p>
+                        })}
+                    </div>
+
             </div>
         );
     }
