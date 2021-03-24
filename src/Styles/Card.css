@@ -1,0 +1,33 @@
+.comment{
+  font-size: 12px;
+  text-align: left;
+  background-color: lightgreen;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  
+}
+.comments{
+  padding-left: 0px !important;
+}
+.number {
+  color: red;
+  font-family: "Roboto";
+  padding-left: 1px;
+  font-size: 13px;
+}
+.like {
+  color: blue;
+  font-family: "Roboto";
+  font-size: 13px;
+  padding-left: 10px;
+  text-decoration: underline;
+}
+.category {
+  font-family: "Roboto";
+  font-size: 13px;
+  padding-left: 110px;
+}
+
+
+
+
